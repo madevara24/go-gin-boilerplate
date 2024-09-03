@@ -2,8 +2,8 @@ package response
 
 import (
 	"fmt"
-	"go-gin-boilerplate/internal/pkg"
-	"go-gin-boilerplate/internal/pkg/errors"
+	"go-gin-boilerplate/internal/pkg/common"
+	"go-gin-boilerplate/internal/pkg/common/errors"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -16,15 +16,18 @@ type MetaTpl struct {
 }
 
 type BasePayload struct {
-	Success bool        `json:"success"`
-	Message string      `json:"message"`
-	Data    interface{} `json:"data"`
-	Error   string      `json:"error,omitempty"`
-	Meta    *MetaTpl    `json:"meta,omitempty"`
+	Success  bool        `json:"success"`
+	Message  string      `json:"message"`
+	Data     interface{} `json:"data"`
+	Error    string      `json:"error,omitempty"`
+	Meta     *MetaTpl    `json:"meta,omitempty"`
+	TraceID  string      `json:"trace_id,omitempty"`
+	TraceLog string      `json:"trace_log,omitempty"`
 }
 
 func WriteError(c *gin.Context, err error) {
-	c.Set(pkg.ErrorMessageKey, err.Error())
+
+	c.Set(common.ErrorMessageKey, err.Error())
 
 	httpStatusCode := http.StatusInternalServerError
 	payload := BasePayload{

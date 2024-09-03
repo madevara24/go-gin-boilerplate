@@ -1,4 +1,4 @@
-package pkg
+package common
 
 const (
 	HeaderXRequestID                 = "X-Request-ID"
