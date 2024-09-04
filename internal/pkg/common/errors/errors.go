@@ -8,7 +8,7 @@ const (
 )
 
 var (
-	ErrJSONParse        = NewErr(http.StatusBadRequest, "PAYLOAD-01", "Terjadi Kesalahan pada parameter input.")
+	ErrJSONParse        = NewErr(http.StatusBadRequest, "PAYLOAD-01", "invalid json payload")
 	ErrJWTClaimsParse   = NewErr(http.StatusBadRequest, "PAYLOAD-02", "unable read user claims")
 	ErrUserTokenMissing = NewErr(http.StatusBadRequest, "PAYLOAD-03", "unable retrieve user token")
 	ErrUnauthorized     = NewErr(http.StatusUnauthorized, "PAYLOAD-04", "token invalid")

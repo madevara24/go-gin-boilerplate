@@ -16,13 +16,10 @@ type MetaTpl struct {
 }
 
 type BasePayload struct {
-	Success  bool        `json:"success"`
-	Message  string      `json:"message"`
-	Data     interface{} `json:"data"`
-	Error    string      `json:"error,omitempty"`
-	Meta     *MetaTpl    `json:"meta,omitempty"`
-	TraceID  string      `json:"trace_id,omitempty"`
-	TraceLog string      `json:"trace_log,omitempty"`
+	Success bool        `json:"success"`
+	Message string      `json:"message"`
+	Data    interface{} `json:"data"`
+	Error   string      `json:"error,omitempty"`
 }
 
 func WriteError(c *gin.Context, err error) {
