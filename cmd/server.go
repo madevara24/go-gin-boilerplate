@@ -3,8 +3,10 @@ package cmd
 import (
 	"context"
 	"go-gin-boilerplate/config"
+	"go-gin-boilerplate/internal/app"
 	"go-gin-boilerplate/internal/pkg/common/server"
 	ginCommon "go-gin-boilerplate/internal/pkg/common/server/gin"
+	"go-gin-boilerplate/internal/pkg/datasource"
 	"os"
 	"os/signal"
 	"syscall"
@@ -39,6 +41,10 @@ func run() {
 	}
 
 	srv := server.NewServer(ginHttpServer.GetRouter(), srvConfig)
+
+	datasource := datasource.NewDataSource()
+
+	container := app.NewContainer(datasource)
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)

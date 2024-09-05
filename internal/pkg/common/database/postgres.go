@@ -2,16 +2,15 @@ package database
 
 import (
 	"context"
+	"database/sql"
 	"log"
 
 	"github.com/jmoiron/sqlx"
-	"go.elastic.co/apm/module/apmsql/v2"
-
-	_ "go.elastic.co/apm/module/apmsql/pq"
+	_ "github.com/lib/pq"
 )
 
 func NewPostgres(config *Configuration) error {
-	sqldb, err := apmsql.Open("postgres", config.Dsn)
+	sqldb, err := sql.Open("postgres", config.Dsn)
 	if err != nil {
 		log.Fatal(err)
 	}
