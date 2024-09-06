@@ -14,6 +14,10 @@ var (
 
 type Config struct {
 
+	// METADATA
+	AppName    string `mapstructure:"APP_NAME"`
+	AppVersion string `mapstructure:"APP_VERSION"`
+
 	// SERVER
 	AllowedOrigins     string `mapstructure:"ALLOWED_ORIGINS"`
 	ENV                string `mapstructure:"ENV"`

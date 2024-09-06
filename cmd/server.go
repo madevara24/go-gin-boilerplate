@@ -4,6 +4,7 @@ import (
 	"context"
 	"go-gin-boilerplate/config"
 	"go-gin-boilerplate/internal/app"
+	"go-gin-boilerplate/internal/app/delivery/rest"
 	"go-gin-boilerplate/internal/pkg/common/server"
 	ginCommon "go-gin-boilerplate/internal/pkg/common/server/gin"
 	"go-gin-boilerplate/internal/pkg/datasource"
@@ -45,6 +46,10 @@ func run() {
 	datasource := datasource.NewDataSource()
 
 	container := app.NewContainer(datasource)
+
+	router := rest.NewRouter(ctx, ginHttpServer.GetRouter(), datasource, container)
+
+	router.RegisterRouter()
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
