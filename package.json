@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:madevara24/go-gin-boilerplate.git",
-  "author": "madevara <muhammad.aditya@efishery.com>",
+  "author": "Devara <adityadevara91@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
