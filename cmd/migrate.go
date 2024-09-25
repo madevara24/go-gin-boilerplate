@@ -2,10 +2,11 @@ package cmd
 
 import (
 	"fmt"
-	"go-gin-boilerplate/internal/pkg/common/database"
 	"go-gin-boilerplate/migrations"
 	"log"
 	"os"
+
+	"github.com/madevara24/go-common/database"
 
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"

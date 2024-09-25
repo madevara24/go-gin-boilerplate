@@ -6,10 +6,11 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"go-gin-boilerplate/internal/pkg/common/array"
 	"os"
 	"text/template"
 	"time"
+
+	"github.com/madevara24/go-common/array"
 
 	"github.com/jmoiron/sqlx"
 )

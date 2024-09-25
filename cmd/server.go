@@ -5,13 +5,14 @@ import (
 	"go-gin-boilerplate/config"
 	"go-gin-boilerplate/internal/app"
 	"go-gin-boilerplate/internal/app/delivery/rest"
-	"go-gin-boilerplate/internal/pkg/common/server"
-	ginCommon "go-gin-boilerplate/internal/pkg/common/server/gin"
 	"go-gin-boilerplate/internal/pkg/datasource"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/madevara24/go-common/server"
+	ginCommon "github.com/madevara24/go-common/server/gin"
 
 	"github.com/spf13/cobra"
 )

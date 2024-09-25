@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"go-gin-boilerplate/internal/pkg/common/database"
+	"github.com/madevara24/go-common/database"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -22,7 +22,7 @@ func NewDataSource() *DataSource {
 		config.Get().DBHost,
 		config.Get().DBPort,
 		config.Get().DBName,
-	), "cultivation-sqlx")
+	), config.Get().DBSqlxKey)
 
 	postgresDB, err := sqlx.Connect("postgres", postgresClient.Dsn)
 	if err != nil {

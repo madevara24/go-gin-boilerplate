@@ -34,6 +34,7 @@ type Config struct {
 	DBPassword    string `mapstructure:"DB_PASSWORD"`
 	DBPort        string `mapstructure:"DB_PORT"`
 	DBUsername    string `mapstructure:"DB_USERNAME"`
+	DBSqlxKey     string `mapstructure:"DB_SQLX_KEY"`
 }
 
 func Get() *Config {

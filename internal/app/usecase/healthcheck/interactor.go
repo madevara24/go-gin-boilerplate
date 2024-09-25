@@ -34,7 +34,7 @@ func (i interactor) Execute(ctx context.Context) InportResponse {
 	}
 
 	return InportResponse{
-		Name:    "Service Cultivation",
+		Name:    "Boilerplate",
 		Message: message,
 		Status: Status{
 			Postgres: postgres,

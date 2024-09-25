@@ -22,3 +22,5 @@ go.work
 
 # Node modules
 node_modules
+
+.env
