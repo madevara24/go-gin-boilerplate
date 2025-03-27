@@ -7,12 +7,14 @@ import (
 	"time"
 
 	"github.com/madevara24/go-common/database"
+	"github.com/madevara24/go-common/mapper"
 
 	"github.com/jmoiron/sqlx"
 )
 
 type DataSource struct {
 	Postgre *sqlx.DB
+	Mapper  mapper.IMapper
 }
 
 func NewDataSource() *DataSource {
@@ -35,5 +37,6 @@ func NewDataSource() *DataSource {
 
 	return &DataSource{
 		Postgre: postgresDB,
+		Mapper:  mapper.NewPostgresMapper(),
 	}
 }
