@@ -35,6 +35,11 @@ type Config struct {
 	DBPort        string `mapstructure:"DB_PORT"`
 	DBUsername    string `mapstructure:"DB_USERNAME"`
 	DBSqlxKey     string `mapstructure:"DB_SQLX_KEY"`
+
+	// JWT
+	JWTSecretKey    string `mapstructure:"JWT_SECRET_KEY"`
+	JWTExpiryHours  int    `mapstructure:"JWT_EXPIRY_HOURS"`
+	JWTRefreshHours int    `mapstructure:"JWT_REFRESH_HOURS"`
 }
 
 func Get() *Config {

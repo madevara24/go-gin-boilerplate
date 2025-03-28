@@ -47,7 +47,7 @@ func (r *repo) Create(ctx context.Context, user entity.User) error {
 func (r *repo) FindByEmail(ctx context.Context, email string) (entity.User, error) {
 	var user entity.User
 	query, err := r.datasource.Mapper.Search(ctx, user, entity.USERS_TABLE_NAME, mapper.SearchFilter{
-		Where: "email = ?",
+		Where: " email = $1 ",
 	})
 	if err != nil {
 		return entity.User{}, err

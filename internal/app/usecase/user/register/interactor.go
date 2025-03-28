@@ -29,7 +29,7 @@ func (i interactor) Execute(ctx context.Context, req InportRequest) error {
 	}
 
 	exissting, err := i.userRepo.FindByEmail(ctx, user.Email)
-	if err != nil {
+	if err != nil && err != entity.ErrUserNotFound {
 		return err
 	}
 

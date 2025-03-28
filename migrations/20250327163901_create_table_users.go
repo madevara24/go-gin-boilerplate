@@ -14,7 +14,7 @@ func mig_20250327163901_create_table_users_up(tx *sql.Tx) error {
 
 	_, err := tx.Exec(`
 		CREATE TABLE IF NOT EXISTS users (
-			uuid UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+			uuid UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 			email VARCHAR(255) NOT NULL UNIQUE,
 			password TEXT NOT NULL,
 			created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
