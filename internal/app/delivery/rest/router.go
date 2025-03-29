@@ -34,8 +34,14 @@ func (h *Router) RegisterRouter() {
 	// PING
 	v1.GET("/health", healthcheck.HealthCheckHandler(h.container.HealthCheckInport))
 
-	v1.POST("/register", user.Register(h.container.UserRegisterInport))
-	v1.POST("/login", auth.Login(h.container.UserLoginInport))
+	// AUTH
+	authRouter := v1.Group("/auth")
+	authRouter.POST("/login", auth.Login(h.container.AuthLoginInport))
+	authRouter.POST("/refresh", auth.Refresh(h.container.AuthRefreshInport))
+
+	// USER
+	userRouter := v1.Group("/user")
+	userRouter.POST("/register", user.Register(h.container.UserRegisterInport))
 
 	// Protected routes
 	protected := v1.Group("")
