@@ -48,6 +48,5 @@ func (h *Router) RegisterRouter() {
 	protected.Use(middleware.AuthMiddleware())
 	{
 		// Add protected routes here
-		// protected.GET("/me", user.GetProfile(h.container.UserGetProfileInport))
 	}
 }
