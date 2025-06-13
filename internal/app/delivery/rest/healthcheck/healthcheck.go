@@ -14,7 +14,7 @@ import (
 // @Success      200  {object}  healthcheck.InportResponse  "OK response"
 // @Failure      503  {object}  healthcheck.InportResponse  "Service Unavailable response"
 // @Router       /healthcheck [get]
-func HealthCheckHandler(inport healthcheck.Inport) gin.HandlerFunc {
+func HealthCheck(inport healthcheck.Inport) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		resp := inport.Execute(c.Copy().Request.Context())
 

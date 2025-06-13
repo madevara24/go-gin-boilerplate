@@ -7,22 +7,21 @@ import (
 	"go-gin-boilerplate/internal/app/delivery/rest/healthcheck"
 	"go-gin-boilerplate/internal/app/delivery/rest/middleware"
 	"go-gin-boilerplate/internal/app/delivery/rest/user"
-	"go-gin-boilerplate/internal/pkg/datasource"
 
 	"github.com/gin-gonic/gin"
 )
 
 type Router struct {
-	router     *gin.Engine
-	datasource *datasource.DataSource
-	container  *app.Container
+	context   context.Context // NOTE: For middlewares
+	router    *gin.Engine
+	container *app.Container
 }
 
-func NewRouter(ctx context.Context, router *gin.Engine, datasource *datasource.DataSource, container *app.Container) *Router {
+func NewRouter(ctx context.Context, router *gin.Engine, container *app.Container) *Router {
 	return &Router{
-		router:     router,
-		datasource: datasource,
-		container:  container,
+		context:   ctx,
+		router:    router,
+		container: container,
 	}
 }
 
@@ -32,7 +31,7 @@ func (h *Router) RegisterRouter() {
 	v1 := h.router.Group("/v1")
 
 	// PING
-	v1.GET("/health", healthcheck.HealthCheckHandler(h.container.HealthCheckInport))
+	v1.GET("/health", healthcheck.HealthCheck(h.container.HealthCheckInport))
 
 	// AUTH
 	authRouter := v1.Group("/auth")

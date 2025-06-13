@@ -48,7 +48,7 @@ func run() {
 
 	container := app.NewContainer(datasource)
 
-	router := rest.NewRouter(ctx, ginHttpServer.GetRouter(), datasource, container)
+	router := rest.NewRouter(ctx, ginHttpServer.GetRouter(), container)
 
 	router.RegisterRouter()
 
